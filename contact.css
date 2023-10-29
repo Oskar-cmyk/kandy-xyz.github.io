@@ -1,0 +1,53 @@
+*{box-sizing: border-box;}
+
+body {
+    font-family: 'Courier Prime', monospace;
+background-color: whitesmoke;
+margin: 0px;
+margin-top: 10vw;
+}
+
+
+h1 {
+    line-height: 0.5em;
+    margin-left: 10vw;
+}
+h2 {
+    font-size: 18px;
+    font-weight: lighter;
+    margin-left: 10vws;
+}
+
+p {
+    font-size: 18px;
+    overflow: scroll;
+}
+
+a{
+    background-color: #84ff00;
+    padding: 0.1em;
+    color: white;
+    border-radius: 4px;
+}
+
+ul {
+    margin: 13vw;
+    margin-left: 20vw;
+    list-style: none;
+    padding: 0;
+}
+
+a:link{
+    text-decoration: none;
+    color: white;
+}
+
+a:visited{
+    color:blue;
+}
+
+a:hover{
+ color: rgb(255, 0, 0);
+ background-color: transparent;
+}
+

@@ -1,0 +1,150 @@
+*{box-sizing: border-box;}
+
+body {
+    
+    font-family: 'Courier Prime', monospace;
+background-color: whitesmoke;
+}
+
+h1 {
+    font-size: 1.5em;
+    padding: 20px;
+    line-height: 0.5em;
+    margin-top: 3vw;
+}
+h4 {
+    font-size: 1em;
+    font-weight: 100;
+    padding: 2vw;
+    line-height: 1.4em;
+   }
+h3{
+    font-size: 1em;
+    font-weight: 100;
+    padding: 10px;
+}
+h3:hover {
+    color: azure;
+    background-color: blueviolet;
+}
+button{
+    font-size: 1em;
+    font-weight: 100;
+    padding: 10px;
+	width: 100px;
+    background-color: whitesmoke;
+    border-style: unset;
+}
+
+
+   
+}
+
+button:hover {
+    color: azure;
+    background-color: blueviolet;
+    border-style: unset;
+}
+.block {
+    display: block;
+    width: 100%;
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: left;
+  }
+p {
+    font-size: 18px;
+    margin: 30px 0;
+    width: 33.333vw; /* 1vw = 1% viewport width*/
+}
+
+img {
+    width: 90%;
+    height: auto;
+  }
+
+a{
+    background-color:  #84ff00;
+    padding: 0.1em;
+    color: white;
+    border-radius: 4px;
+}
+    }
+ul {
+    margin: 50px;
+    padding: 0;
+    list-style: none;
+}
+
+a:link{
+    text-decoration: none;
+    color: white;
+}
+
+a:visited{
+    color:rgb(22, 0, 216);
+}
+
+a:hover{
+ color: rgb(132, 132, 14);
+ background-color: transparent;
+}
+
+a:active{
+    color: red;
+    background-color: transparent;
+}
+
+
+.flex-container {
+    width: 100vw;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-grow: inherit;
+    gap: 20px;
+  }
+  
+  .flex-item {
+    width: 400px;
+    /* margin: 20px 0; */
+    /* line-height: 100px; */ 
+    flex-grow: 1;
+   position: relative; 
+
+  }
+  
+  .flex-item_1 {
+    width: 400px;
+    /* margin: 20px 0; */
+    /* line-height: 100px; */ 
+   margin-left: 30vw;
+
+  }
+  /*.flex-item div {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(25, 37, 141, 0.5);
+      color: #fff;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+
+  }
+  .flex-item img {
+      display: block;
+  }
+  .flex-item:hover div {
+      opacity: 1;
+  }
+  

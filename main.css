@@ -1,0 +1,141 @@
+*{box-sizing: border-box;}
+
+
+body {
+    
+    font-family: 'Courier Prime', monospace;
+background-color: rgb(255, 255, 255);
+margin: 10vw ;
+ 
+}
+
+img {
+    max-width: 130%;
+    height: auto;
+   
+}
+
+@media only screen and (min-width: 500px){
+     body {
+/*height: 0px; /* Used to enable scrolling */
+    /*background: linear-gradient(0deg, #0cc584 0%, #0004ff 51%, #2cb5e8 85%); */background-color: rgb(15, 71, 224);
+}
+	.home a {
+		background-color: whitesmoke;
+    }
+}
+ 
+    h1{
+      font-size: 30px;
+      font-weight: 100;
+    }
+h2{
+    font-size: 10vw;
+    line-height: 0.9em;
+    font-weight: 400;
+}
+
+
+p {
+      
+      font-size: 18px;
+    margin: 50px 10px;
+   
+ 
+    overflow: hidden; 
+  line-height: 1.6em;
+}
+
+a{
+    background-color: #84ff00;
+    padding: 0.1em;
+  color: rgb(0, 0, 0);
+  border-radius: 4px;
+}
+
+ul {
+   
+    margin: 50px;
+     padding: 4;
+     list-style: none;
+     
+}
+
+a:link{
+    text-decoration: none;
+    color: white;
+}
+
+a:visited{
+    color:rgb(0, 0, 255);
+}
+
+a:hover{
+    color: #ffff00;
+ background-color: transparent;
+}
+
+@media only screen and (max-width : 421px ){
+    .home header h2 {
+        transform: rotate(90deg) translateY(-100%);
+        transform-origin: left top;
+        
+    }
+    .home header {
+        height: 22rem;
+    
+	}
+}
+
+
+.marquee--before {
+    left: 1.375rem;
+    -webkit-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    -webkit-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+.marquee {
+    /* -webkit-animation: marquee-scroll-down 10s linear infinite; */
+   
+    position: absolute;
+    top: 150%;
+    z-index: -1;
+    overflow: hidden;
+    font-size: 1.875rem;
+    color: #84ff00;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+.marquee--after{right: 1.375rem;
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    -webkit-transform-origin: 100% 0;
+    -ms-transform-origin: 100% 0;
+    transform-origin: 100% 0;}
+
+.marquee__inner {
+   /* webkit-animation: marquee-scroll-down 10s linear infinite; */
+    animation:  10s linear infinite;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    animation-name: marquee-scroll-down;
+}
+
+@keyframes marquee-scroll-down {
+0% {
+transform: translate(0);
+}
+100% {
+transform: translate(-100%);
+
+}
+}
