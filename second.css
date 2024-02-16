@@ -126,6 +126,127 @@ a:active{
    margin-left: 30vw;
 
   }
+/* Hide the hidden-info by default */
+.hidden-info {
+    display: none;
+}
+
+/* Style the hidden-info content */
+.hidden-info h4 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333; /* Adjust color as needed */
+}
+
+.hidden-info p {
+    font-size: 14px;
+    color: #666; /* Adjust color as needed */
+}
+/* Styles for the lightbox view */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9); /* White background with transparency */
+    z-index: 9999;
+    overflow: auto;
+}
+
+
+
+.lightbox.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox .content {
+    display: flex;
+    flex-direction: column; /* Arrange items in a column */
+    justify-content: center; /* Center horizontally */
+    align-items: center;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 80%;
+}
+
+.lightbox-img {
+    max-width: 100%; /* Adjust the width of the image */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.lightbox iframe {
+    width: 80%; /* Set the width of the iframe to 100% */
+}
+.additional-info {
+    max-width: 100%; /* Adjust the width of the text */
+    text-align: left;
+}
+
+/* Style for the close button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 120px; /* Increase the font size */
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    z-index: 9999; /* Ensure it's above the lightbox content */
+    mix-blend-mode: difference; /* Apply subtracted blending mode */
+}
+
+.close:focus {
+    outline: none;
+}
+
+
+
+/* Media query for smaller screens */
+@media (min-width: 768px) {
+    .lightbox .content {
+        flex-direction: row; /* Change to row layout on larger screens */
+    }
+    
+    .lightbox-img {
+        max-width: 50%; /* Adjust image width for larger screens */
+        margin-bottom: 0; /* Remove bottom margin */
+    }
+    .lightbox iframe {
+        width: 90%; /* Set the width of the iframe to 100% */
+    }
+    .additional-info {
+        max-width: 50%; /* Adjust text width for larger screens */
+    }
+    /* Style for the close button */
+    .close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 36px; /* Increase the font size */
+        cursor: pointer;
+        padding: 0;
+        line-height: 1;
+        z-index: 9999; /* Ensure it's above the lightbox content */
+        mix-blend-mode: difference; /* Apply subtracted blending mode */
+    }
+
+    .close:focus {
+        outline: none;
+    }
+}
+
+
   /*.flex-item div {
       position: absolute;
       bottom: 0;
