@@ -11,6 +11,12 @@ document.addEventListener("DOMContentLoaded", function() {
         lightboxContent.innerHTML = content + hiddenInfo;
         lightbox.classList.add("active");
         lightboxContent.appendChild(closeButton); // Append the close button
+
+        // Adjust position of all iframes to relative
+        const iframes = lightboxContent.querySelectorAll('iframe');
+        iframes.forEach(iframe => {
+            iframe.style.position = 'relative';
+        });
     }
 
     // Function to close the lightbox
@@ -30,7 +36,8 @@ document.addEventListener("DOMContentLoaded", function() {
             const isVimeoVideo = this.querySelector('iframe[src*="player.vimeo.com"]');
             if (isVimeoVideo) {
                 const embedCode = isVimeoVideo.outerHTML;
-                openLightbox(embedCode, '');
+                const hiddenInfo = this.querySelector('.hidden-info').innerHTML;
+                openLightbox(embedCode, hiddenInfo);
             } else {
                 const imageSrc = this.querySelector('img').src;
                 const imageCode = `<img src="${imageSrc}" alt="lightbox-image">`;
