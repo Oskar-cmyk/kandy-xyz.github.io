@@ -48,3 +48,13 @@ body {
     color: #1C00FF; /* Change text color on hover for right side */
     text-decoration: none; /* Remove underline on hover */
 }
+
+/* Adjust for smaller screens */
+@media screen and (max-width: 768px) {
+    .leftside {
+        height: 70vh; /* Set initial height to full viewport height */
+    }
+    .rightside {
+        height: 30vh; /* Set initial height to full viewport height */
+    }
+}
