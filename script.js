@@ -57,3 +57,10 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("clickableHeader").addEventListener("click", function() {
+        window.location.href = "mainpage"; // Replace "mainpage" with the URL of your main page
+    });
+});
