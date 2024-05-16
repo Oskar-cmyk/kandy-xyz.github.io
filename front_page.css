@@ -52,9 +52,9 @@ body {
 /* Adjust for smaller screens */
 @media screen and (max-width: 768px) {
     .leftside {
-        height: 70vh; /* Set initial height to full viewport height */
+        height: 40vh; /* Set initial height to full viewport height */
     }
     .rightside {
-        height: 30vh; /* Set initial height to full viewport height */
+        height: 60vh; /* Set initial height to full viewport height */
     }
 }
