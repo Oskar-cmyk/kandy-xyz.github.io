@@ -26,6 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     rightSide.addEventListener('click', function(event) {
-        expandAndRedirect('index.html');
+        expandAndRedirect('mainpage');
     });
 });
