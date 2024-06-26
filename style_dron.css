@@ -1,0 +1,38 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+}
+a {
+    color: crimson;
+}
+a :hover {
+    color: rgb(226, 104, 129);
+}
+.container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Set container above canvas */
+}
+
+.content {
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+canvas#hydraCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Send canvas to the bottom */
+}
