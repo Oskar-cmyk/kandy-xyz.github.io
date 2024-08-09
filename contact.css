@@ -51,3 +51,7 @@ a:hover{
  background-color: transparent;
 }
 
+main * {
+    margin: 5px;
+    border: 1px solid black;
+}

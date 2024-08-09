@@ -36,3 +36,7 @@ canvas#hydraCanvas {
     height: 100%;
     z-index: 0; /* Send canvas to the bottom */
 }
+main * {
+    margin: 5px;
+    border: 1px solid black;
+}

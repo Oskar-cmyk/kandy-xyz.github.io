@@ -139,3 +139,17 @@ transform: translate(-100%);
 
 }
 }
+* {
+    padding: 10px;
+    border: 1px solid black;
+}
+body .form .main .marquee__inner{
+
+    margin: 0px;
+    border: transparent;
+
+}
+main * {
+    margin: 5px;
+    border: 1px solid black;
+}

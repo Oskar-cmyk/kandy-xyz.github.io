@@ -38,7 +38,7 @@ button{
 
 
    
-}
+
 
 button:hover {
     color: azure;
@@ -71,7 +71,7 @@ a{
     color: white;
     border-radius: 4px;
 }
-    }
+    
 ul {
     margin: 50px;
     padding: 0;
@@ -245,7 +245,10 @@ a:active{
         outline: none;
     }
 }
-
+main * {
+    margin: 5px;
+    border: 1px solid black;
+}
 
   /*.flex-item div {
       position: absolute;
@@ -269,3 +272,4 @@ a:active{
       opacity: 1;
   }
   
+*/
