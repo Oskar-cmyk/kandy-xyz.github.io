@@ -63,6 +63,7 @@ p {
 img {
     width: 90%;
     height: auto;
+    overflow: hidden;
   }
 
 a{
