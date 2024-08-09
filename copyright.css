@@ -5,12 +5,13 @@ body {
 background-color: whitesmoke;
 margin: 20px;
 margin-top: 10vw;
+padding: 20px;
 }
 
 
 h1 {
     line-height: 0.5em;
-    margin-left: 10vw;
+   /*  margin-left: 10vw; */
 }
 h2 {
     font-size: 1em;
@@ -21,6 +22,7 @@ h2 {
 p {
     font-size: 1em;
     overflow: scroll;
+    line-height: 1.5em; /* or adjust as needed */
 }
 
 a{
@@ -52,6 +54,8 @@ a:hover{
 }
 
 main * {
-    margin: 5px;
-    border: 1px solid black;
+   /*  margin: 5px; */
+    
+    padding: 10px;
+    max-width: 1200px;
 }

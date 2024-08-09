@@ -27,7 +27,7 @@ img {
 }
  
     h1{
-      font-size: 30px;
+      font-size: 2em;
       font-weight: 100;
     }
 h2{
@@ -59,7 +59,7 @@ body {
 }
 p {
       
-      font-size: 18px;
+      font-size: 1em;
     margin: 50px 10px;
    
  
@@ -192,4 +192,16 @@ body .form .main .marquee__inner{
 main * {
     margin: 5px;
     border: 1px solid black;
+}
+a.styled-link {
+    color: inherit; /* Inherit color from parent */
+    background-color: transparent; /* Transparent background */
+    border: none; /* Remove border */
+    text-decoration: none; /* Remove underline */
+    font-size: inherit; /* Inherit font size from parent */
+    line-height: inherit; /* Inherit line height from parent */
+}
+
+a.styled-link:hover {
+    text-decoration: underline; /* Optional: Add underline on hover */
 }
