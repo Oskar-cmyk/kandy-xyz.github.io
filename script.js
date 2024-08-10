@@ -5,12 +5,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     closeButton.classList.add("close");
     closeButton.innerHTML = "&#10005;"; // "x" symbol
+    lightboxContent.appendChild(closeButton); // Append the close button once
 
     // Function to open the lightbox
     function openLightbox(content, hiddenInfo) {
         lightboxContent.innerHTML = content + hiddenInfo;
         lightbox.classList.add("active");
-        lightboxContent.appendChild(closeButton); // Append the close button
 
         // Adjust position of all iframes to relative
         const iframes = lightboxContent.querySelectorAll('iframe');
@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function closeLightbox() {
         lightboxContent.innerHTML = ''; // Clear the content
         lightbox.classList.remove("active");
+        lightboxContent.appendChild(closeButton); // Re-append the close button
     }
 
     // Add event listener to open the lightbox when clicking on gallery items
@@ -56,10 +57,8 @@ document.addEventListener("DOMContentLoaded", function() {
             closeLightbox();
         }
     });
-});
 
-
-document.addEventListener("DOMContentLoaded", function() {
+    // Add event listener to redirect when clicking on the clickable header
     document.getElementById("clickableHeader").addEventListener("click", function() {
         window.location.href = "mainpage"; // Replace "mainpage" with the URL of your main page
     });

@@ -274,3 +274,11 @@ main * {
   }
   
 */
+.hidden-info img {
+   flex-direction: column;
+    max-width: 100%;
+    height: auto;
+    margin: 10px 0; /* Adds space between images */
+}
+
+
