@@ -65,4 +65,8 @@ document.addEventListener("DOMContentLoaded", function() {
             closeLightbox();
         }
     });
+       // Add event listener to redirect when clicking on the clickable header
+       document.getElementById("clickableHeader").addEventListener("click", function() {
+        window.location.href = "mainpage"; // Replace "mainpage" with the URL of your main page
+    });
 });
