@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const rightSide = document.querySelector('.rightside');
 
     leftSide.addEventListener('click', function(event) {
-        expandAndRedirect('https://oskarkandare.myportfolio.com/work');
+        expandAndRedirect('Commercial');
     });
 
     rightSide.addEventListener('click', function(event) {
