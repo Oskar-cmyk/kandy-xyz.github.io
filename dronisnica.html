@@ -40,14 +40,3 @@
 </html>
 
 
- noise(() => Math.sin(time)*3, () => Math.sin(time)/10000)
-	.mult(osc(10, 0.1, () => Math.sin(time) * 3)
-		.saturate(3)
-          .invert(1,2))
-	.modulate(o0, 0.584)
-	.add(o0, 0.8)
-	.scale(0.98)
-	.modulate(noise(10.2, 1), 0.003)
-	.saturate(0.1)
-	.out();
-speed = 0.196;
