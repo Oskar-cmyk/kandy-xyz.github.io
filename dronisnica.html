@@ -18,6 +18,7 @@
             <p>If you want to book us contact us here</p>
             <a href="mailto:dronisnica@gmail.com">dronisnica@gmail.com</a>
             <a href="https://vimeo.com/1009783974">vimeo</a>
+            <p>Dronišnica is an experimental audiovisual band. Their sounds are crafted with modular synthesizers and heavy amplifiers, producing dense drones, which are transformed into pure noise. They are echoing and reflecting the chaotic soundscape of our society. Meanwhile, generated landscapes susceptible to sound manipulation visually enhance the atmosphere. The connection between auditory and visual creation breaks free from the digital realm, seeping into our physical world.</p>
         </div>
     </div>
     <canvas id="hydraCanvas"></canvas>
@@ -31,6 +32,7 @@
           .invert(1,2))
 	.modulate(o0, 0.584)
 	.add(o0, 0.8)
+    .hue(10,2)
 	.scale(() => (mouse.x/10000) +0.97, () => (mouse.y/10000) +0.98)
 	.modulate(noise(10.2, 1), 0.003)
 	.hue(0.2)
