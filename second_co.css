@@ -1,9 +1,10 @@
-*{box-sizing: border-box;}
+* {
+    box-sizing: border-box;
+}
 
 body {
-    
-    font-family: 'Courier Prime', monospace;
-background-color: whitesmoke;
+    font-family: "Courier Prime", monospace;
+    background-color: whitesmoke;
 }
 
 h1 {
@@ -17,8 +18,8 @@ h4 {
     font-weight: 100;
     padding: 2vw;
     line-height: 1.4em;
-   }
-h3{
+}
+h3 {
     font-size: 1em;
     font-weight: 100;
     padding: 10px;
@@ -27,18 +28,14 @@ h3:hover {
     color: azure;
     background-color: blueviolet;
 }
-button{
+button {
     font-size: 1em;
     font-weight: 100;
     padding: 10px;
-	width: 100px;
+    width: 100px;
     background-color: whitesmoke;
     border-style: unset;
 }
-
-
-   
-
 
 button:hover {
     color: azure;
@@ -53,7 +50,7 @@ button:hover {
     font-size: 1em;
     cursor: pointer;
     text-align: left;
-  }
+}
 p {
     font-size: 1em;
     margin: 30px;
@@ -61,78 +58,73 @@ p {
 }
 
 img {
-   /*  max-height: 80vh; */
+    /*  max-height: 80vh; */
     max-width: 80vh;
     overflow: hidden;
+}
 
-  }
-
-a{
-    background-color:  #84ff00;
+a {
+    background-color: #84ff00;
     padding: 0.1em;
     color: white;
     border-radius: 4px;
 }
-    
+
 ul {
     margin: 50px;
     padding: 0;
     list-style: none;
 }
 
-a:link{
+a:link {
     text-decoration: none;
     color: white;
 }
 
-a:visited{
-    color:rgb(22, 0, 216);
+a:visited {
+    color: rgb(22, 0, 216);
 }
 
-a:hover{
- color: rgb(132, 132, 14);
- background-color: transparent;
+a:hover {
+    color: rgb(132, 132, 14);
+    background-color: transparent;
 }
 
-a:active{
+a:active {
     color: red;
     background-color: transparent;
 }
 
-
 .flex-container {
-  
     min-height: 100vh;
     padding: 20px;
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
     flex-grow: inherit;
     gap: 20px;
-  }
-  
-  .flex-item {
+}
+
+.flex-item {
     width: 400px;
     /* margin: 20px 0; */
-    /* line-height: 100px; */ 
+    /* line-height: 100px; */
     flex-grow: 1;
-   position: relative; 
+    position: relative;
+}
 
-  }
-  
-  .flex-item_1 {
+.flex-item_1 {
     width: 400px;
     /* margin: 20px 0; */
-    /* line-height: 100px; */ 
-   margin-left: 30vw;
-
-  }
+    /* line-height: 100px; */
+    margin-left: 30vw;
+}
 /* Hide the hidden-info by default */
-.hidden-info{
+.hidden-info {
     display: none;
 }
-.hidden-images{
+.hidden-images {
     display: none;
 }
 
@@ -144,7 +136,6 @@ a:active{
 }
 
 .hidden-info p {
-   
     font-size: 1em;
     color: #666; /* Adjust color as needed */
 }
@@ -158,9 +149,13 @@ a:active{
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.9); /* White background with transparency */
+    background-color: rgba(
+        255,
+        255,
+        255,
+        0.9
+    ); /* White background with transparency */
     z-index: 1000;
-  
 }
 
 .lightbox.active {
@@ -179,7 +174,6 @@ a:active{
     flex-direction: column; /* Stack items vertically */
     gap: 10px; /* Space between items */
     max-height: 90%; /* Ensure the content does not exceed the viewport height */
-   
 }
 /* Ensure hidden images are properly styled */
 .hidden-images img {
@@ -191,8 +185,6 @@ a:active{
     gap: 10px; /* Space between items */
 }
 /* Ensure hidden images are properly styled */
-
-
 
 .lightbox iframe {
     max-width: 80vh; /* Occupy only the left 50% */
@@ -219,7 +211,8 @@ a:active{
     mix-blend-mode: difference; /* Apply subtracted blending mode */
 }
 
-.close:hover{}
+.close:hover {
+}
 
 .close:focus {
     outline: none;
@@ -249,11 +242,11 @@ a:active{
     .lightbox iframe {
         max-width: 80vh; /* Occupy only the left 50% */
     }
-   
+
     .additional-info {
         max-width: 50%; /* Adjust text width for larger screens */
     }
-    
+
     /* Style for the close button */
     .close {
         position: absolute;
@@ -278,12 +271,13 @@ main * {
     margin: 5px;
     border: 1px solid black;
 }
-.box{
+.box {
     display: none;
     width: 100%;
 }
 
-a:hover + .box,.box:hover{
+a:hover + .box,
+.box:hover {
     display: block;
     position: relative;
     z-index: 100;
