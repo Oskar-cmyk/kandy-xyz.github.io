@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="copyright.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -18,10 +18,10 @@
         <h1 id="clickableHeader">website copyright info</h1>
 
     </header>
-    <form>  
+    <form>
 
     <main>
-       
+
         <p>This website is owned and operated by Oskar Kandare. All content, including text, images, and code, is the exclusive property of Oskar Kandare unless otherwise stated. Unauthorized use of the content may violate copyright, trademark, and other applicable laws.</p>
 
         <p>The information provided on this website is intended for general informational purposes only. While every effort is made to ensure the accuracy and timeliness of the content, Oskar Kandare makes no representations or warranties, express or implied, regarding the completeness, accuracy, reliability, or suitability of the information, products, services, or related graphics contained on the website. Any reliance you place on such information is strictly at your own risk.</p>
@@ -36,12 +36,19 @@
 
         <p>This website was initially designed and coded by Oskar Kandare, with subsequent enhancements made with the assistance of ChatGPT.</p>
 
-        <p>&copy; 2025 Oskar Kandare. All rights reserved.</p>
+        <li>&copy; Oskar Kandare <span id="year"></span></li>
 
-        
-  
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("year").textContent = new Date().getFullYear();
+        });
+        </script> All rights reserved.</p>
+
+
+
     </main>
     <footer>
+
         <a href="mainpage">home</a>
         </footer>
  <script src="script.js"></script>
