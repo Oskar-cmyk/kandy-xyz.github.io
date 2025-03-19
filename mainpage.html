@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body class="home">
     <h1>Oskar Kandare</h1>
@@ -19,11 +19,11 @@
     </div><div class="marquee marquee--before" aria-hidden="true" style="width: 1139px;"><div class="marquee__inner">Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene Antropocene</div></div>
     <div class="marquee marquee--after" aria-hidden="true" style="width: 1786px;"><div class="marquee__inner">projects projects projects projects projects projects projects projects projects projects projects projects projects projects projects projects projects projects projects projects projects projects projects projects projects projects projects projects projects projects </div></div>
     <main>
-       
+
         <p>click <a href="work">work</a>, <br>
-            <a href="bio">bio</a>, 
+            <a href="bio">bio</a>,
             <a href="contact">contact</a>,
-			<a href="CV">CV</a> <br> or 
+			<a href="CV">CV</a> <br> or
             <a href="dronisnica">more</a>. <br>
           </p>
           <div>
@@ -32,8 +32,13 @@
           </div>
     </main>
     <footer>
-    <a href="index">Welcome page</a> 
-    <p><a href="copyright.html" class="styled-link">&copy;Oskar Kandare 2025</a></p>
+    <a href="index">Welcome page</a>
+    <p><a href="copyright.html" class="styled-link">&copy;Oskar Kandare <span id="year"></span></a></p>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("year").textContent = new Date().getFullYear();
+    });
+    </script>
 </footer>
 </body>
 </html>
