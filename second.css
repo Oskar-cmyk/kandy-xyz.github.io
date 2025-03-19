@@ -13,6 +13,12 @@ h1 {
   line-height: 0.5em;
   margin-top: 3vw;
 }
+h5 {
+  font-size: 1em;
+  font-weight: 100;
+  padding: 2vw;
+  line-height: 1.4em;
+}
 h4 {
   font-size: 1.5em;
   font-weight: 700;
@@ -156,8 +162,17 @@ a:active {
     0.9
   ); /* White background with transparency */
   z-index: 1000;
+  overflow: hidden; /* Prevent lightbox overlay from scrolling */
+}
+.lightbox .content {
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
+.lightbox .content::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
 .lightbox.active {
   display: flex;
   justify-content: center;
@@ -197,7 +212,7 @@ a:active {
 /* Style for the close button */
 .close {
   display: block; /* Ensure the button is displayed */
-  position: absolute; /* Position it absolutely within the lightbox */
+  position: fixed; /* Position it absolutely within the lightbox */
   top: 10px; /* Adjust the top position as needed */
   right: 10px; /* Adjust the right position as needed */
   background: none; /* Remove any background if necessary */
@@ -249,7 +264,7 @@ a:active {
 
   /* Style for the close button */
   .close {
-    position: absolute;
+    position: fixed;
     top: 20px;
     right: 20px;
     background: none;
@@ -270,4 +285,34 @@ a:active {
 main * {
   margin: 5px;
   border: 1px solid black;
+}
+/* Media queries for mobile devices */
+@media screen and (max-width: 768px) {
+  .lightbox .content {
+    position: relative;
+    max-width: 95%;
+    padding: 10px;
+  }
+
+  .lightbox-inner {
+    gap: 10px;
+  }
+
+  .image-content img {
+    width: 100%;
+  }
+
+  .vimeo-video iframe {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16/9;
+  }
+}
+
+/* For very small screens */
+@media screen and (max-width: 480px) {
+  .lightbox .content {
+    max-width: 98%;
+    padding: 8px;
+  }
 }
