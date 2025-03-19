@@ -1,281 +1,273 @@
-*{box-sizing: border-box;}
+* {
+  box-sizing: border-box;
+}
 
 body {
-    
-    font-family: 'Courier Prime', monospace;
-background-color: whitesmoke;
+  font-family: "Courier Prime", monospace;
+  background-color: whitesmoke;
 }
 
 h1 {
-    font-size: 1.5em;
-    padding: 20px;
-    line-height: 0.5em;
-    margin-top: 3vw;
+  font-size: 1.5em;
+  padding: 20px;
+  line-height: 0.5em;
+  margin-top: 3vw;
 }
 h4 {
-    font-size: 1em;
-    font-weight: 100;
-    padding: 2vw;
-    line-height: 1.4em;
-   }
-h3{
-    font-size: 1em;
-    font-weight: 100;
-    padding: 10px;
+  font-size: 1.5em;
+  font-weight: 700;
+  padding: 2vw;
+  line-height: 1.4em;
+}
+h3 {
+  font-size: 1em;
+  font-weight: 100;
+  padding: 10px;
 }
 h3:hover {
-    color: azure;
-    background-color: blueviolet;
+  color: azure;
+  background-color: blueviolet;
 }
-button{
-    font-size: 1em;
-    font-weight: 100;
-    padding: 10px;
-	width: 100px;
-    background-color: whitesmoke;
-    border-style: unset;
+button {
+  font-size: 1em;
+  font-weight: 100;
+  padding: 10px;
+  width: 100px;
+  background-color: whitesmoke;
+  border-style: unset;
 }
-
-
-   
-
 
 button:hover {
-    color: azure;
-    background-color: blueviolet;
-    border-style: unset;
+  color: azure;
+  background-color: blueviolet;
+  border-style: unset;
 }
 .block {
-    display: block;
-    width: 100%;
-    border: none;
-    padding: 14px 28px;
-    font-size: 1em;
-    cursor: pointer;
-    text-align: left;
-  }
+  display: block;
+  width: 100%;
+  border: none;
+  padding: 14px 28px;
+  font-size: 1em;
+  cursor: pointer;
+  text-align: left;
+}
 p {
-    font-size: 1em;
-    margin: 30px;
-    /*width: 33.333vw; 1vw = 1% viewport width*/
+  font-size: 1em;
+  margin: 30px;
+  /*width: 33.333vw; 1vw = 1% viewport width*/
 }
 
 img {
-   /*  max-height: 80vh; */
-    max-width: 80vh;
-    overflow: hidden;
-
-  }
-
-a{
-    background-color:  #84ff00;
-    padding: 0.1em;
-    color: white;
-    border-radius: 4px;
+  /*  max-height: 80vh; */
+  max-width: 80vh;
+  overflow: hidden;
 }
-    
+
+a {
+  background-color: #84ff00;
+  padding: 0.1em;
+  color: white;
+  border-radius: 4px;
+}
+
 ul {
-    margin: 50px;
-    padding: 0;
-    list-style: none;
+  margin: 50px;
+  padding: 0;
+  list-style: none;
 }
 
-a:link{
-    text-decoration: none;
-    color: white;
+a:link {
+  text-decoration: none;
+  color: white;
 }
 
-a:visited{
-    color:rgb(22, 0, 216);
+a:visited {
+  color: rgb(22, 0, 216);
 }
 
-a:hover{
- color: rgb(132, 132, 14);
- background-color: transparent;
+a:hover {
+  color: rgb(132, 132, 14);
+  background-color: transparent;
 }
 
-a:active{
-    color: red;
-    background-color: transparent;
+a:active {
+  color: red;
+  background-color: transparent;
 }
-
 
 .flex-container {
-  
-    min-height: 100vh;
-    padding: 20px;
-    display: flex;
-    flex-direction:row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    flex-grow: inherit;
-    gap: 20px;
-  }
-  
-  .flex-item {
-    width: 400px;
-    /* margin: 20px 0; */
-    /* line-height: 100px; */ 
-    flex-grow: 1;
-   position: relative; 
-
-  }
-  
-  .flex-item_1 {
-    width: 400px;
-    /* margin: 20px 0; */
-    /* line-height: 100px; */ 
-   margin-left: 30vw;
-
-  }
-/* Hide the hidden-info by default */
-.hidden-info{
-    display: none;
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-grow: inherit;
+  gap: 20px;
 }
-.hidden-images{
-    display: none;
+
+.flex-item {
+  width: 400px;
+  /* margin: 20px 0; */
+  /* line-height: 100px; */
+  flex-grow: 1;
+  position: relative;
+}
+
+.flex-item_1 {
+  width: 400px;
+  /* margin: 20px 0; */
+  /* line-height: 100px; */
+  margin-left: 30vw;
+}
+/* Hide the hidden-info by default */
+.hidden-info {
+  display: none;
+}
+.hidden-images {
+  display: none;
 }
 
 /* Style the hidden-info content */
 .hidden-info h4 {
-    font-size: 1em;
-    font-weight: bold;
-    color: #333; /* Adjust color as needed */
+  font-size: 1em;
+  font-weight: bold;
+  color: #333; /* Adjust color as needed */
 }
 
 .hidden-info p {
-   
-    font-size: 1em;
-    color: #666; /* Adjust color as needed */
+  font-size: 1em;
+  color: #666; /* Adjust color as needed */
 }
 /* Right Side: Static Hidden Info */
 
 /* Styles for the lightbox view */
 .lightbox {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.9); /* White background with transparency */
-    z-index: 1000;
-  
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.9
+  ); /* White background with transparency */
+  z-index: 1000;
 }
 
 .lightbox.active {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .lightbox .content {
-    padding: 20px;
-    border-radius: 5px;
-    position: relative;
-    display: flex;
-    overflow-y: auto; /* Allow scrolling within the hidden images */
+  padding: 20px;
+  border-radius: 5px;
+  position: relative;
+  display: flex;
+  overflow-y: auto; /* Allow scrolling within the hidden images */
 
-    flex-direction: column; /* Stack items vertically */
-    gap: 10px; /* Space between items */
-    max-height: 90%; /* Ensure the content does not exceed the viewport height */
-   
+  flex-direction: column; /* Stack items vertically */
+  gap: 10px; /* Space between items */
+  max-height: 90%; /* Ensure the content does not exceed the viewport height */
 }
 /* Ensure hidden images are properly styled */
 .hidden-images img {
-    max-width: 80vh; /* Occupy only the left 50% */
-    height: 100%; /* Full height */
-    overflow-y: auto; /* Allow scrolling within the hidden images */
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Space between items */
+  max-width: 80vh; /* Occupy only the left 50% */
+  height: 100%; /* Full height */
+  overflow-y: auto; /* Allow scrolling within the hidden images */
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between items */
 }
 /* Ensure hidden images are properly styled */
 
-
-
 .lightbox iframe {
-    max-width: 80vh; /* Occupy only the left 50% */
+  max-width: 80vh; /* Occupy only the left 50% */
 }
 .additional-info {
-    max-width: 100%; /* Adjust the width of the text */
-    text-align: left;
+  max-width: 100%; /* Adjust the width of the text */
+  text-align: left;
 }
 
 /* Style for the close button */
 .close {
-    display: block; /* Ensure the button is displayed */
-    position: absolute; /* Position it absolutely within the lightbox */
-    top: 10px; /* Adjust the top position as needed */
-    right: 10px; /* Adjust the right position as needed */
-    background: none; /* Remove any background if necessary */
-    border: none; /* Remove any border if necessary */
-    color: #ffffff;
-    font-size: 120px; /* Increase the font size */
+  display: block; /* Ensure the button is displayed */
+  position: absolute; /* Position it absolutely within the lightbox */
+  top: 10px; /* Adjust the top position as needed */
+  right: 10px; /* Adjust the right position as needed */
+  background: none; /* Remove any background if necessary */
+  border: none; /* Remove any border if necessary */
+  color: #ffffff;
+  font-size: 120px; /* Increase the font size */
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  z-index: 9999; /* Ensure it's above the lightbox content */
+  mix-blend-mode: difference; /* Apply subtracted blending mode */
+}
+
+.close:hover {
+}
+
+.close:focus {
+  outline: none;
+}
+
+.lightbox-inner {
+  display: block; /* Change display to block */
+  flex-direction: column; /* Change flex-direction to column */
+  width: auto; /* Adjust width */
+  height: auto; /* Adjust height */
+}
+/* Media query for smaller screens */
+@media (min-width: 768px) {
+  .lightbox .content {
+    flex-direction: row; /* Change to row layout on larger screens */
+    padding: 20px;
+  }
+  .lightbox-inner {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+  }
+  .lightbox-img {
+    margin-bottom: 0; /* Remove bottom margin */
+  }
+  .lightbox iframe {
+    max-width: 80vh; /* Occupy only the left 50% */
+  }
+
+  .additional-info {
+    max-width: 50%; /* Adjust text width for larger screens */
+  }
+
+  /* Style for the close button */
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 36px; /* Increase the font size */
     cursor: pointer;
     padding: 0;
     line-height: 1;
     z-index: 9999; /* Ensure it's above the lightbox content */
     mix-blend-mode: difference; /* Apply subtracted blending mode */
-}
+  }
 
-.close:hover{}
-
-.close:focus {
+  .close:focus {
     outline: none;
-}
-
-.lightbox-inner {
-    display: block; /* Change display to block */
-    flex-direction: column; /* Change flex-direction to column */
-    width: auto; /* Adjust width */
-    height: auto; /* Adjust height */
-}
-/* Media query for smaller screens */
-@media (min-width: 768px) {
-    .lightbox .content {
-        flex-direction: row; /* Change to row layout on larger screens */
-        padding: 20px;
-    }
-    .lightbox-inner {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        height: 100%;
-    }
-    .lightbox-img {
-        margin-bottom: 0; /* Remove bottom margin */
-    }
-    .lightbox iframe {
-        max-width: 80vh; /* Occupy only the left 50% */
-    }
-   
-    .additional-info {
-        max-width: 50%; /* Adjust text width for larger screens */
-    }
-    
-    /* Style for the close button */
-    .close {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        background: none;
-        border: none;
-        color: #fff;
-        font-size: 36px; /* Increase the font size */
-        cursor: pointer;
-        padding: 0;
-        line-height: 1;
-        z-index: 9999; /* Ensure it's above the lightbox content */
-        mix-blend-mode: difference; /* Apply subtracted blending mode */
-    }
-
-    .close:focus {
-        outline: none;
-    }
+  }
 }
 main * {
-    margin: 5px;
-    border: 1px solid black;
+  margin: 5px;
+  border: 1px solid black;
 }
-
