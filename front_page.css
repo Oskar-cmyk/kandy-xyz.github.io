@@ -62,40 +62,6 @@ body {
   }
 }
 #availability-indicator {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-  z-index: 1000; /* Ensure it appears above other content */
-}
-
-.green {
-  background-color: green;
-}
-
-.red {
-  background-color: red;
-}
-
-#calendar {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  border: 1px solid #ccc;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-}
-
-.hidden {
-  display: none;
-}
-#availability-indicator {
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -131,72 +97,11 @@ body {
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   z-index: 1001;
-  max-width: 90vw;
-  max-height: 90vh;
-  overflow: auto;
 }
 
-.calendar-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-}
-
-.events-list {
-  margin-top: 20px;
-}
-
-.event-item {
-  padding: 10px;
-  margin: 5px 0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.event-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  display: inline-block;
-  margin-right: 5px;
-}
-
-.event-dot.confirmed {
-  background-color: #2ecc71;
-}
-.event-dot.tentative {
-  background-color: #f1c40f;
-}
-.event-dot.cancelled {
-  background-color: #e74c3c;
-}
-.event-dot.default {
-  background-color: #3498db;
-}
-
-.hidden {
+#calendar.hidden {
   display: none;
 }
-#availability-indicator {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  z-index: 1000;
-}
-
-#availability-indicator:hover {
-  transform: scale(1.2);
-}
-
 #calendar {
   position: fixed;
   top: 50%;
