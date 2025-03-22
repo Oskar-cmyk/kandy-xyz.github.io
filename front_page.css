@@ -61,20 +61,23 @@ body {
     height: 60vh; /* Set initial height to full viewport height */
   }
 }
-#availability-indicator {
+#availability-container {
   position: fixed;
-  bottom: 20px;
+  top: 20px; /* Changed from bottom to top */
   right: 20px;
+  z-index: 1000;
+}
+
+#availability-indicator {
   width: 20px;
   height: 20px;
   border-radius: 50%;
   cursor: pointer;
   transition: transform 0.3s ease;
-  z-index: 1000;
 }
 
 #availability-indicator:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 #availability-indicator.green {
@@ -87,34 +90,40 @@ body {
   box-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
 }
 
-#calendar {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+#status-popup {
+  position: absolute;
+  top: 30px; /* Changed from bottom to top */
+  right: 0;
   background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  z-index: 1001;
+  padding: 10px 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: max-content;
+  max-width: 250px;
+  font-size: 1.5em;
 }
 
-#calendar.hidden {
+#status-popup.hidden {
   display: none;
 }
+
 #calendar {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  padding: 20px;
+  padding: clamp(5px, 2vh, 20px);
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   z-index: 1001;
-  width: 90%;
-  max-width: 840px; /* 800px iframe + 40px padding */
-  max-height: 90vh;
+  width: 95vw;
+  height: 90vh;
+  max-width: 1200px;
+  max-height: 900px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Prevent content from spilling out */
 }
 
 #calendar.hidden {
@@ -122,16 +131,17 @@ body {
 }
 
 #calendar h2 {
-  margin-bottom: 15px;
+  margin-bottom: clamp(10px, 2vh, 20px);
+  font-size: clamp(1rem, 2vw, 1.5rem);
   text-align: center;
-  font-size: clamp(1.2rem, 4vw, 1.8rem);
 }
 
 #calendar-content {
+  flex: 1;
   position: relative;
   width: 100%;
-  height: 0;
-  padding-bottom: 75%; /* Maintains 4:3 aspect ratio */
+  height: 100%;
+  overflow: hidden;
 }
 
 #calendar-content iframe {
@@ -143,74 +153,51 @@ body {
   border: 1px solid #777;
 }
 
-.calendar-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-}
-
 #calendar button {
-  display: block;
-  margin: 10px auto 0;
-  padding: 8px 16px;
-  background-color: #3498db;
+  margin-top: clamp(5px, 1vh, 10px);
+  padding: clamp(5px, 1vh, 8px) clamp(10px, 2vw, 16px);
+  background: linear-gradient(to right, white 50%, #1c00ff 50%);
+  background-size: 200% 100%;
+  background-position: right;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: clamp(0.9rem, 3vw, 1.1rem);
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transition: all 0.5s ease;
 }
 
 #calendar button:hover {
-  background-color: #2980b9;
+  background-position: left;
+  color: #1c00ff;
+}
+#mobile-status {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 15px;
+  text-align: center;
+  font-size: 14px;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Mobile Adjustments */
-@media (max-width: 600px) {
-  #calendar {
-    padding: 15px;
-    width: 95%;
-  }
-
-  #availability-indicator {
-    width: 16px;
-    height: 16px;
-    bottom: 15px;
-    right: 15px;
-  }
+#mobile-status.status-hidden {
+  transform: translateY(-100%);
 }
 
-/* For very small screens */
-@media (max-width: 320px) {
-  #calendar {
-    padding: 10px;
-  }
-
-  #calendar h2 {
-    margin-bottom: 10px;
-  }
-
-  #calendar button {
-    padding: 6px 12px;
-  }
+#mobile-status.status-visible {
+  transform: translateY(0);
 }
 
-/* For landscape orientation on mobile */
-@media (max-height: 500px) and (orientation: landscape) {
-  #calendar {
-    max-height: 95vh;
-  }
-
-  #calendar h2 {
-    margin-bottom: 10px;
-    font-size: 1rem;
-  }
-
-  #calendar-content {
-    padding-bottom: 60%; /* Adjusted aspect ratio for landscape */
+@media (min-width: 769px) {
+  #mobile-status {
+    display: none;
   }
 }

@@ -60,27 +60,31 @@
         </div>
       </div>
     </div>
+    <div id="availability-container">
+        <div id="availability-indicator" class="green" onclick="toggleCalendar()"></div>
+        <div id="status-popup" class="hidden">
+            <p id="next-status-change"></p>
+        </div>
+    </div>
 
+    <div id="calendar" class="hidden">
+        <h2>Availability Calendar</h2>
+        <div id="calendar-content">
+            <iframe
+                src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Europe%2FBelgrade&showPrint=0&showCalendars=0&hl=en_GB&showTz=0&showTabs=0&showTitle=0&src=NzcwYWU4NDFiZGVlZDgxZjJkZTdjNzljMjdmM2Y0Mjc0YzdkZWY0M2I2ZDg2MjJlMjhkZDViZjQ2Njc2NjlmY0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%237CB342"
+                style="border:0px"
+                width="800"
+                height="600"
+                frameborder="0"
+                scrolling="no">
+            </iframe>
+        </div>
+        <button onclick="toggleCalendar()">Close</button>
+    </div>
     <footer></footer>
 
     <script src="script2.js"></script>
-    <!-- Availability Indicator and Calendar -->
-    <div id="availability-indicator" class="green"></div>
 
-    <div id="calendar" class="hidden">
-      <h2>Availability Calendar</h2>
-      <div id="calendar-content">
-        <iframe
-          src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Europe%2FBelgrade&showTabs=0&showPrint=0&showCalendars=0&src=NzcwYWU4NDFiZGVlZDgxZjJkZTdjNzljMjdmM2Y0Mjc0YzdkZWY0M2I2ZDg2MjJlMjhkZDViZjQ2Njc2NjlmY0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t"
-          style="border: solid 1px #777"
-          width="800"
-          height="600"
-          frameborder="0"
-          scrolling="no"
-        >
-        </iframe>
-      </div>
-      <button onclick="toggleCalendar()">Close</button>
     </div>
   </body>
 </html>
