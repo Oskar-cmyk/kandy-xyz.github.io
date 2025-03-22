@@ -1,60 +1,311 @@
 body {
-    margin: 0;
-    font-family: 'Courier Prime', monospace;
-    background-color: white;
+  margin: 0;
+  font-family: "Courier Prime", monospace;
+  background-color: white;
 }
 
-.leftside, .rightside {
-    width: 50%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.leftside,
+.rightside {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .leftside {
-    background: white;
+  background: white;
 }
 
 .rightside {
-    background: black;
+  background: black;
 }
 
-.leftside:hover, .rightside:hover {
-    width: 100%;
+.leftside:hover,
+.rightside:hover {
+  width: 100%;
 }
 
-.leftside a, .rightside a {
-    color: inherit;
-    text-decoration: none;
+.leftside a,
+.rightside a {
+  color: inherit;
+  text-decoration: none;
 }
 
 .leftside a {
-    color: black; /* Set text color to black for left side */
+  color: black; /* Set text color to black for left side */
 }
 
 .rightside a {
-    color: white; /* Set text color to white for right side */
+  color: white; /* Set text color to white for right side */
 }
 
 .leftside:hover a {
-    color: #1C00FF; /* Change text color on hover for left side */
-    text-decoration: none; /* Remove underline on hover */
+  color: #1c00ff; /* Change text color on hover for left side */
+  text-decoration: none; /* Remove underline on hover */
 }
 
 .rightside:hover a {
-    color: #1C00FF; /* Change text color on hover for right side */
-    text-decoration: none; /* Remove underline on hover */
+  color: #1c00ff; /* Change text color on hover for right side */
+  text-decoration: none; /* Remove underline on hover */
 }
 
 /* Adjust for smaller screens */
 @media screen and (max-width: 768px) {
-    .leftside {
-        height: 40vh; /* Set initial height to full viewport height */
-    }
-    .rightside {
-        height: 60vh; /* Set initial height to full viewport height */
-    }
+  .leftside {
+    height: 40vh; /* Set initial height to full viewport height */
+  }
+  .rightside {
+    height: 60vh; /* Set initial height to full viewport height */
+  }
+}
+#availability-indicator {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 1000; /* Ensure it appears above other content */
+}
+
+.green {
+  background-color: green;
+}
+
+.red {
+  background-color: red;
+}
+
+#calendar {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.hidden {
+  display: none;
+}
+#availability-indicator {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+#availability-indicator:hover {
+  transform: scale(1.2);
+}
+
+#availability-indicator.green {
+  background-color: #2ecc71;
+  box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+}
+
+#availability-indicator.red {
+  background-color: #e74c3c;
+  box-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
+}
+
+#calendar {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+.calendar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.events-list {
+  margin-top: 20px;
+}
+
+.event-item {
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.event-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.event-dot.confirmed {
+  background-color: #2ecc71;
+}
+.event-dot.tentative {
+  background-color: #f1c40f;
+}
+.event-dot.cancelled {
+  background-color: #e74c3c;
+}
+.event-dot.default {
+  background-color: #3498db;
+}
+
+.hidden {
+  display: none;
+}
+#availability-indicator {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+#availability-indicator:hover {
+  transform: scale(1.2);
+}
+
+#calendar {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  width: 90%;
+  max-width: 840px; /* 800px iframe + 40px padding */
+  max-height: 90vh;
+}
+
+#calendar.hidden {
+  display: none;
+}
+
+#calendar h2 {
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+}
+
+#calendar-content {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 75%; /* Maintains 4:3 aspect ratio */
+}
+
+#calendar-content iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #777;
+}
+
+.calendar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+#calendar button {
+  display: block;
+  margin: 10px auto 0;
+  padding: 8px 16px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: clamp(0.9rem, 3vw, 1.1rem);
+}
+
+#calendar button:hover {
+  background-color: #2980b9;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+  #calendar {
+    padding: 15px;
+    width: 95%;
+  }
+
+  #availability-indicator {
+    width: 16px;
+    height: 16px;
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+/* For very small screens */
+@media (max-width: 320px) {
+  #calendar {
+    padding: 10px;
+  }
+
+  #calendar h2 {
+    margin-bottom: 10px;
+  }
+
+  #calendar button {
+    padding: 6px 12px;
+  }
+}
+
+/* For landscape orientation on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  #calendar {
+    max-height: 95vh;
+  }
+
+  #calendar h2 {
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+
+  #calendar-content {
+    padding-bottom: 60%; /* Adjusted aspect ratio for landscape */
+  }
 }
