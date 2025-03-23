@@ -1,52 +1,62 @@
-function expandAndRedirect(url) {
+function expandAndRedirect(event, url) {
+  event.preventDefault();
   const leftSide = document.querySelector(".leftside");
   const rightSide = document.querySelector(".rightside");
 
   if (leftSide.contains(event.target)) {
     rightSide.classList.remove("expanded");
     leftSide.classList.add("expanded");
-    leftSide.style.color = "#1C00FF"; // Change text color to #1C00FF
+    leftSide.style.color = "#1C00FF";
   } else if (rightSide.contains(event.target)) {
     leftSide.classList.remove("expanded");
     rightSide.classList.add("expanded");
-    rightSide.style.color = "#1C00FF"; // Change text color to #1C00FF
+    rightSide.style.color = "#1C00FF";
   }
 
   setTimeout(() => {
-    window.location.href = url;
-  }, 300); // Adjust the delay time as needed
+    window.location.replace(url);
+  }, 300);
 }
 
+// Remove the first DOMContentLoaded listener and keep only one initialization block
 document.addEventListener("DOMContentLoaded", function () {
   const leftSide = document.querySelector(".leftside");
   const rightSide = document.querySelector(".rightside");
+  const indicator = document.getElementById("availability-indicator");
+  const popup = document.getElementById("status-popup");
+  const calendar = document.getElementById("calendar");
 
-  leftSide.addEventListener("click", function (event) {
-    expandAndRedirect("Commercial");
-  });
+  // Click handlers for navigation
+  leftSide.addEventListener("click", (event) =>
+    expandAndRedirect(event, "Commercial")
+  );
+  rightSide.addEventListener("click", (event) =>
+    expandAndRedirect(event, "mainpage")
+  );
 
-  rightSide.addEventListener("click", function (event) {
-    expandAndRedirect("mainpage");
-
-    // Add hover functionality for the status popup
-    const indicator = document.getElementById("availability-indicator");
-    const popup = document.getElementById("status-popup");
-
+  // Handle desktop/mobile functionality
+  if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+    // Mobile setup
+    createMobileStatusBar();
+    handleMobileTouch();
+  } else {
+    // Desktop hover functionality
     if (indicator && popup) {
       indicator.addEventListener("mouseenter", () => {
-        popup.classList.add("visible");
+        if (calendar.classList.contains("hidden")) {
+          popup.classList.remove("hidden");
+        }
       });
 
       indicator.addEventListener("mouseleave", () => {
-        popup.classList.remove("visible");
+        popup.classList.add("hidden");
       });
     }
+  }
 
-    // Initial fetch
-    fetchAvailability();
-    // Update every minute
-    setInterval(fetchAvailability, 60000);
-  });
+  // Start availability checking
+  fetchAvailability();
+  setInterval(fetchAvailability, 60000);
 });
 const API_KEY = "AIzaSyDB-g91hYIIkbBOk_VnHc4QT3NXEsFEux4";
 const CALENDAR_ID =
@@ -66,24 +76,6 @@ function createMobileStatusBar() {
 }
 
 // Main functionality remains the same
-function expandAndRedirect(url) {
-  const leftSide = document.querySelector(".leftside");
-  const rightSide = document.querySelector(".rightside");
-
-  if (leftSide.contains(event.target)) {
-    rightSide.classList.remove("expanded");
-    leftSide.classList.add("expanded");
-    leftSide.style.color = "#1C00FF";
-  } else if (rightSide.contains(event.target)) {
-    leftSide.classList.remove("expanded");
-    rightSide.classList.add("expanded");
-    rightSide.style.color = "#1C00FF";
-  }
-
-  setTimeout(() => {
-    window.location.href = url;
-  }, 300);
-}
 
 function toggleCalendar() {
   const calendar = document.getElementById("calendar");
@@ -164,13 +156,26 @@ function updateStatus(available, message) {
 // Mobile-specific touch handling
 function handleMobileTouch() {
   let startY;
+  const scrollThreshold = 10; // Increase this number to require more scrolling
 
   document.addEventListener(
     "touchstart",
     (e) => {
       startY = e.touches[0].clientY;
+    },
+    { passive: true }
+  );
+
+  document.addEventListener(
+    "touchmove",
+    (e) => {
       if (window.scrollY === 0) {
-        statusBar.className = "status-visible";
+        const currentY = e.touches[0].clientY;
+        const pullDistance = currentY - startY;
+
+        if (pullDistance > scrollThreshold) {
+          statusBar.className = "status-visible";
+        }
       }
     },
     { passive: true }
@@ -188,41 +193,3 @@ function handleMobileTouch() {
     { passive: true }
   );
 }
-
-// Initialize
-document.addEventListener("DOMContentLoaded", function () {
-  const leftSide = document.querySelector(".leftside");
-  const rightSide = document.querySelector(".rightside");
-
-  leftSide.addEventListener("click", (event) =>
-    expandAndRedirect("Commercial")
-  );
-  rightSide.addEventListener("click", (event) => expandAndRedirect("mainpage"));
-
-  // Desktop hover functionality
-  const indicator = document.getElementById("availability-indicator");
-  const popup = document.getElementById("status-popup");
-  const calendar = document.getElementById("calendar");
-
-  if (indicator && popup) {
-    indicator.addEventListener("mouseenter", () => {
-      if (calendar.classList.contains("hidden")) {
-        popup.classList.remove("hidden");
-      }
-    });
-
-    indicator.addEventListener("mouseleave", () => {
-      popup.classList.add("hidden");
-    });
-  }
-
-  // Mobile setup
-  if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-    createMobileStatusBar();
-    handleMobileTouch();
-  }
-
-  // Start availability checking
-  fetchAvailability();
-  setInterval(fetchAvailability, 60000);
-});
