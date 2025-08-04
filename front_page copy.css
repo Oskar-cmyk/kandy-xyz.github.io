@@ -1,0 +1,138 @@
+body {
+  margin: 0;
+  font-family: "Courier Prime", monospace;
+  background-color: white;
+}
+
+.leftside,
+.rightside {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.leftside {
+  background: white;
+}
+
+.rightside {
+  background: black;
+}
+
+.leftside:hover,
+.rightside:hover {
+  width: 100%;
+}
+
+.leftside a,
+.rightside a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.leftside a {
+  color: black; /* Set text color to black for left side */
+}
+
+.rightside a {
+  color: white; /* Set text color to white for right side */
+}
+
+.leftside:hover a {
+  color: #1c00ff; /* Change text color on hover for left side */
+  text-decoration: none; /* Remove underline on hover */
+}
+
+.rightside:hover a {
+  color: #1c00ff; /* Change text color on hover for right side */
+  text-decoration: none; /* Remove underline on hover */
+}
+
+/* Adjust for smaller screens */
+@media screen and (max-width: 768px) {
+  .leftside {
+    height: 40vh; /* Set initial height to full viewport height */
+  }
+  .rightside {
+    height: 60vh; /* Set initial height to full viewport height */
+  }
+}
+#availability-indicator {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+#availability-indicator:hover {
+  transform: scale(1.2);
+}
+
+#availability-indicator.green {
+  background-color: #2ecc71;
+  box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+}
+
+#availability-indicator.red {
+  background-color: #e74c3c;
+  box-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
+}
+#calendar {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: clamp(5px, 2vh, 20px);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  width: min(95vw, 1200px);
+  height: min(90vh, 900px);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+#calendar.hidden {
+  display: none;
+}
+
+#calendar h2 {
+  margin-bottom: clamp(10px, 2vh, 20px);
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  text-align: center;
+}
+
+#calendar-content {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  min-height: 0; /* Important for flex container */
+}
+
+#calendar-content iframe {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #777;
+}
+
+#calendar button {
+  margin-top: clamp(5px, 1vh, 10px);
+  padding: clamp(5px, 1vh, 8px) clamp(10px, 2vw, 16px);
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+}

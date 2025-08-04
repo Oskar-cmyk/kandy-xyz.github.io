@@ -1,0 +1,43 @@
+#include <Adafruit_NeoPixel.h>
+
+#define PIN            6    // Pin connected to the NeoPixels
+#define NUMPIXELS     12    // Number of NeoPixels in the ring
+#define DELAYVAL      500   // Delay between updates (in milliseconds)
+#define LOADING_DELAY 5000  // Loading delay (in milliseconds)
+
+Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);  // NeoPixel object
+
+void setup() {
+    Serial.begin(9600);     // Initialize serial communication
+    pixels.begin();         // Initialize NeoPixel strip
+}
+
+void loop() {
+    if (Serial.available() > 0) {    // Read the incoming byte from serial port
+        char input = Serial.read();
+
+        if (input == '0') {          // Red blinking
+            blinkSlowlyRed();
+        } else if (input == '1') {   // Green steady
+            steadyGreen();
+        }
+    }
+}
+
+// Function for slow blinking red
+void blinkSlowlyRed() {
+    for (int i = 0; i < NUMPIXELS; i++) {
+        pixels.setPixelColor(i, pixels.Color(150, 0, 0)); // Red color
+    }
+    pixels.show();   // Update NeoPixels
+    delay(DELAYVAL); // Delay for visibility
+}
+
+// Function for steady green
+void steadyGreen() {
+    for (int i = 0; i < NUMPIXELS; i++) {
+        pixels.setPixelColor(i, pixels.Color(0, 150, 0)); // Green color
+    }
+    pixels.show();   // Update NeoPixels
+    delay(DELAYVAL); // Delay for visibility
+}
