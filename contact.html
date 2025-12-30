@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="contact.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -18,20 +18,21 @@
         <h1 id="clickableHeader">Visual artist</h1>
         <h1 id="clickableHeader">Slovenia</h1>
     </header>
-    <form>  
+    <form>
 
     <main>
-       
-            <ul>
-                <li>Telephone: <a href="tel:+38670571330">+386 70 571 330</a> </li>
-                <li>Email: <a href="mailto:oskar.kandare@proton.me">oskar.kandare@proton.me</a></li>
+
+        <ul>
+          <li>Telephone: <a id="contact-phone" href="#">+386 70 571 330</a></li>
+          <li>Email: <a id="contact-email" href="#">oskar.kandare@proton.me</a></li>
             </ul>
-  
+
     </main>
     <footer>
         <a href="mainpage">home</a>
         </footer>
  <script src="script.js"></script>
+ <script src="contact-data.js"></script>
  <script>// Add event listener to redirect when clicking on the clickable header
     document.getElementById("clickableHeader").addEventListener("click", function() {
      window.location.href = "mainpage"; // Replace "mainpage" with the URL of your main page

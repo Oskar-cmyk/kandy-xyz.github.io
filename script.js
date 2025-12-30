@@ -1,72 +1,86 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const lightbox = document.querySelector(".lightbox");
-    const lightboxContent = document.querySelector(".lightbox .content");
-    const closeButton = document.createElement("button");
+document.addEventListener("DOMContentLoaded", function () {
+  const lightbox = document.querySelector(".lightbox");
+  const lightboxContent = document.querySelector(".lightbox .content");
+  const closeButton = document.createElement("button");
 
-    closeButton.classList.add("close");
-    closeButton.innerHTML = "&#10005;"; // "x" symbol
+  closeButton.classList.add("close");
+  closeButton.innerHTML = "&#10005;"; // "x" symbol
 
-    function openLightbox(content, hiddenInfo, hiddenImages, vimeoVideo) {
-        lightboxContent.innerHTML = `
+  function openLightbox(content, hiddenInfo, hiddenImages, vimeoVideo) {
+    lightboxContent.innerHTML = `
             <div class="lightbox-inner">
                 <div class="image-content">
                     ${content}
-                    ${hiddenImages ? hiddenImages : ''}
+                    ${hiddenImages ? hiddenImages : ""}
                 </div>
                 <div class="text-content">
                     ${hiddenInfo}
                 </div>
-                ${vimeoVideo ? `
+                ${
+                  vimeoVideo
+                    ? `
                 <div class="vimeo-video">
                     ${vimeoVideo}
-                </div>` : ''}
+                </div>`
+                    : ""
+                }
             </div>
         `;
-        lightboxContent.appendChild(closeButton); // Ensure the close button is appended after updating content
-        lightbox.classList.add("active");
-    
-    
-        // Adjust position of all iframes to relative
-        const iframes = lightboxContent.querySelectorAll('iframe');
-        iframes.forEach(iframe => {
-            iframe.style.position = 'relative';
-        });
-    }
-    
-    // Function to close the lightbox
-    function closeLightbox() {
-        lightboxContent.innerHTML = ''; // Clear the content
-        lightbox.classList.remove("active");
-    }
+    lightboxContent.appendChild(closeButton);
+    lightbox.classList.add("active");
 
-    // Add event listener to open the lightbox when clicking on gallery items
-    const galleryItems = document.querySelectorAll(".flex-item, .vimeo-video");  // Include .vimeo-video as clickable
-    galleryItems.forEach(item => {
-        item.addEventListener("click", function(event) {
-            // Prevent default action to prevent click event from propagating
-            event.preventDefault();
-
-            const imageSrc = this.querySelector('img') ? this.querySelector('img').src : '';
-            const imageCode = imageSrc ? `<img src="${imageSrc}" alt="lightbox-image">` : '';
-            const hiddenInfo = this.querySelector('.hidden-info').innerHTML;
-            const hiddenImages = this.querySelector('.hidden-images') ? this.querySelector('.hidden-images').innerHTML : '';
-            const vimeoVideo = this.querySelector('.vimeo-video') ? this.querySelector('.vimeo-video').innerHTML : '';
-
-            openLightbox(imageCode, hiddenInfo, hiddenImages, vimeoVideo);
-        });
+    // Make iframes relative
+    const iframes = lightboxContent.querySelectorAll("iframe");
+    iframes.forEach((iframe) => {
+      iframe.style.position = "relative";
     });
+  }
 
-    // Add event listener to close the lightbox when clicking the close button
-    closeButton.addEventListener("click", closeLightbox);
+  function closeLightbox() {
+    lightboxContent.innerHTML = "";
+    lightbox.classList.remove("active");
+  }
 
-    // Add event listener to close the lightbox when clicking outside its content
-    lightbox.addEventListener("click", function(event) {
-        if (event.target === lightbox) {
-            closeLightbox();
-        }
-    });
-       // Add event listener to redirect when clicking on the clickable header
-       document.getElementById("clickableHeader").addEventListener("click", function() {
-        window.location.href = "mainpage"; // Replace "mainpage" with the URL of your main page
+  // ------------------------
+  // Event delegation on container
+  // ------------------------
+  const container = document.getElementById("artworks");
+  container.addEventListener("click", function (event) {
+    const flexItem = event.target.closest(".flex-item");
+    if (!flexItem) return; // clicked outside flex-item
+
+    event.preventDefault();
+
+    const imageSrc = flexItem.querySelector("img")
+      ? flexItem.querySelector("img").src
+      : "";
+    const imageCode = imageSrc
+      ? `<img src="${imageSrc}" alt="lightbox-image">`
+      : "";
+    const hiddenInfo = flexItem.querySelector(".hidden-info")
+      ? flexItem.querySelector(".hidden-info").innerHTML
+      : "";
+    const hiddenImages = flexItem.querySelector(".hidden-images")
+      ? flexItem.querySelector(".hidden-images").innerHTML
+      : "";
+    const vimeoVideo = flexItem.querySelector(".vimeo-video")
+      ? flexItem.querySelector(".vimeo-video").innerHTML
+      : "";
+
+    openLightbox(imageCode, hiddenInfo, hiddenImages, vimeoVideo);
+  });
+
+  closeButton.addEventListener("click", closeLightbox);
+
+  lightbox.addEventListener("click", function (event) {
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  document
+    .getElementById("clickableHeader")
+    .addEventListener("click", function () {
+      window.location.href = "mainpage";
     });
 });
