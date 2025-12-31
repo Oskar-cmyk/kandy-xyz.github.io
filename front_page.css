@@ -169,6 +169,44 @@ body {
   margin-right: auto;
   transition: all 0.5s ease;
 }
+.newsletter-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #b00000; /* red */
+  color: white;
+  overflow: hidden;
+  z-index: 1000;
+  text-decoration: none;
+}
+
+.ticker {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.ticker span {
+  display: inline-block;
+  padding: 10px 0;
+  font-family: "Courier Prime", monospace;
+  font-size: 14px;
+  animation: ticker-move 20s linear infinite;
+}
+
+@keyframes ticker-move {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.newsletter-banner:hover {
+  background: #8f0000;
+  color: white;
+}
 
 #calendar button:hover {
   background-position: left;
