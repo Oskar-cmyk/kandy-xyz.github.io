@@ -1,18 +1,30 @@
 const PROJECT_ID = "z3noo8fe";
 const DATASET = "production";
 
-const query = `
-*[_type == "artwork"] | order(order asc) {
+const query = `*[_type=="artwork"] | order(order asc){
+  _id,
   title,
   year,
   school,
   description,
+  credits,
+  coverMedia{
+      mediaType,
+      "image": image.asset->url,
+      vimeoUrl
+    },
+
+    "legacyCover": coverImage.asset->url,
   "cover": coverImage.asset->url,
-  videos,
   "gallery": gallery[].asset->url,
-  credits
-}
-`;
+  videos,
+  versions[]{
+    title,
+    description,
+    "gallery": gallery[].asset->url,
+    videos
+  }
+}`;
 
 const url = `https://${PROJECT_ID}.api.sanity.io/v2023-01-01/data/query/${DATASET}?query=${encodeURIComponent(
   query
@@ -25,6 +37,26 @@ fetch(url)
     renderArtworks(res.result);
   })
   .catch((err) => console.error(err));
+function renderCover(work) {
+  if (work.coverMedia?.mediaType === "vimeo" && work.coverMedia.vimeoUrl) {
+    return `
+      <iframe
+        src="${work.coverMedia.vimeoUrl}"
+        width="100%" height="480" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
+      ></iframe>
+    `;
+  }
+
+  if (work.coverMedia?.mediaType === "image" && work.coverMedia.image) {
+    return `<img src="${work.coverMedia.image}" style="width:100%">`;
+  }
+
+  if (work.legacyCover) {
+    return `<img src="${work.legacyCover}" style="width:100%">`;
+  }
+
+  return "";
+}
 
 function renderArtworks(artworks) {
   const container = document.getElementById("artworks");
@@ -34,7 +66,7 @@ function renderArtworks(artworks) {
     item.className = "flex-item";
 
     item.innerHTML = `
-      <img src="${work.cover}" style="width:100%">
+      ${renderCover(work)}
       <div>
         <h3>${work.title}</h3>
 

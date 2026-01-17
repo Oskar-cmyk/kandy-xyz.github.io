@@ -40,6 +40,46 @@ document.addEventListener("DOMContentLoaded", function () {
     lightboxContent.innerHTML = "";
     lightbox.classList.remove("active");
   }
+  function showVersion(version) {
+    const img = document.querySelector(".image-content");
+    const text = document.querySelector(".text-content");
+
+    img.innerHTML = "";
+    text.innerHTML = "";
+
+    version.gallery?.forEach((src) => {
+      const el = document.createElement("img");
+      el.src = src;
+      img.appendChild(el);
+    });
+
+    version.videos?.forEach((url) => {
+      img.innerHTML += `<iframe src="${url}" allowfullscreen></iframe>`;
+    });
+
+    if (version.description) {
+      text.innerHTML = `<p>${version.description}</p>`;
+    }
+  }
+
+  function renderVersions(versions) {
+    if (!versions?.length) return "";
+
+    return `
+      <div class="version-tabs">
+        ${versions
+          .map(
+            (v, i) =>
+              `<button class="version-tab ${
+                i === 0 ? "active" : ""
+              }" data-index="${i}">
+                ${v.title || `Version ${i + 1}`}
+              </button>`
+          )
+          .join("")}
+      </div>
+    `;
+  }
 
   // ------------------------
   // Event delegation on container
@@ -83,4 +123,14 @@ document.addEventListener("DOMContentLoaded", function () {
     .addEventListener("click", function () {
       window.location.href = "mainpage";
     });
+});
+document.querySelectorAll(".version-tab").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    document
+      .querySelectorAll(".version-tab")
+      .forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    showVersion(artworkData.versions[btn.dataset.index]);
+  });
 });

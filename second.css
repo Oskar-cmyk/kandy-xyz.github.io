@@ -316,3 +316,6 @@ main * {
     padding: 8px;
   }
 }
+.vp-center {
+  align-items: top !important;
+}
