@@ -144,6 +144,8 @@ a:active {
   line-height: var(--line-height);
   color: #242424;           /* soft black, easier on the eyes than pure #000 */
   -webkit-font-smoothing: antialiased;
+  overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .post__body p {
@@ -454,5 +456,14 @@ main * {
   .lightbox .content {
     max-width: 98%;
     padding: 8px;
+  }
+  .post__body {
+    font-size: 1.0625rem;   /* 17px on phones */
+  }
+
+  @media (min-width: 768px) {
+    .post__body {
+      font-size: 1.25rem;   /* 20px on desktop */
+    }
   }
 }
