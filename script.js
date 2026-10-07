@@ -1,11 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
   const lightbox = document.querySelector(".lightbox");
   const lightboxContent = document.querySelector(".lightbox .content");
+  const container = document.getElementById("artworks");
   const closeButton = document.createElement("button");
 
   closeButton.classList.add("close");
   closeButton.innerHTML = "&#10005;"; // "x" symbol
 
+  // ------------------------
+  // Open / close
+  // ------------------------
   function openLightbox(content, hiddenInfo, hiddenImages, vimeoVideo) {
     lightboxContent.innerHTML = `
             <div class="lightbox-inner">
@@ -28,109 +32,88 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
     lightboxContent.appendChild(closeButton);
     lightbox.classList.add("active");
+    document.body.style.overflow = "hidden";
 
     // Make iframes relative
-    const iframes = lightboxContent.querySelectorAll("iframe");
-    iframes.forEach((iframe) => {
+    lightboxContent.querySelectorAll("iframe").forEach((iframe) => {
       iframe.style.position = "relative";
     });
   }
 
-  function closeLightbox() {
+  function closeLightbox(updateHash = true) {
     lightboxContent.innerHTML = "";
     lightbox.classList.remove("active");
-  }
-  function showVersion(version) {
-    const img = document.querySelector(".image-content");
-    const text = document.querySelector(".text-content");
+    document.body.style.overflow = "";
 
-    img.innerHTML = "";
-    text.innerHTML = "";
-
-    version.gallery?.forEach((src) => {
-      const el = document.createElement("img");
-      el.src = src;
-      img.appendChild(el);
-    });
-
-    version.videos?.forEach((url) => {
-      img.innerHTML += `<iframe src="${url}" allowfullscreen></iframe>`;
-    });
-
-    if (version.description) {
-      text.innerHTML = `<p>${version.description}</p>`;
+    if (updateHash && location.hash) {
+      history.pushState(null, "", location.pathname + location.search);
     }
   }
 
-  function renderVersions(versions) {
-    if (!versions?.length) return "";
+  // ------------------------
+  // Build lightbox from a grid item
+  // ------------------------
+  function openFromItem(flexItem, updateHash = true) {
+    const imageSrc = flexItem.querySelector("img")?.src || "";
+    const imageCode = imageSrc ? `<img src="${imageSrc}" alt="lightbox-image">` : "";
+    const hiddenInfo = flexItem.querySelector(".hidden-info")?.innerHTML || "";
+    const hiddenImages = flexItem.querySelector(".hidden-images")?.innerHTML || "";
+    const vimeoVideo = flexItem.querySelector(".vimeo-video")?.innerHTML || "";
 
-    return `
-      <div class="version-tabs">
-        ${versions
-          .map(
-            (v, i) =>
-              `<button class="version-tab ${
-                i === 0 ? "active" : ""
-              }" data-index="${i}">
-                ${v.title || `Version ${i + 1}`}
-              </button>`
-          )
-          .join("")}
-      </div>
-    `;
+    openLightbox(imageCode, hiddenInfo, hiddenImages, vimeoVideo);
+
+    if (updateHash && flexItem.dataset.slug) {
+      history.pushState(null, "", `#${encodeURIComponent(flexItem.dataset.slug)}`);
+    }
   }
 
   // ------------------------
-  // Event delegation on container
+  // Deep linking via #slug
   // ------------------------
-  const container = document.getElementById("artworks");
-  container.addEventListener("click", function (event) {
+  window.openFromHash = function () {
+    const slug = decodeURIComponent(location.hash.slice(1));
+
+    if (!slug) {
+      closeLightbox(false);
+      return;
+    }
+
+    const item = container?.querySelector(`.flex-item[data-slug="${CSS.escape(slug)}"]`);
+    if (item) {
+      openFromItem(item, false);
+      item.scrollIntoView({ block: "center" });
+    }
+  };
+
+  window.addEventListener("popstate", window.openFromHash);
+
+  // ------------------------
+  // Events
+  // ------------------------
+  container?.addEventListener("click", function (event) {
     const flexItem = event.target.closest(".flex-item");
-    if (!flexItem) return; // clicked outside flex-item
+    if (!flexItem) return;
 
     event.preventDefault();
-
-    const imageSrc = flexItem.querySelector("img")
-      ? flexItem.querySelector("img").src
-      : "";
-    const imageCode = imageSrc
-      ? `<img src="${imageSrc}" alt="lightbox-image">`
-      : "";
-    const hiddenInfo = flexItem.querySelector(".hidden-info")
-      ? flexItem.querySelector(".hidden-info").innerHTML
-      : "";
-    const hiddenImages = flexItem.querySelector(".hidden-images")
-      ? flexItem.querySelector(".hidden-images").innerHTML
-      : "";
-    const vimeoVideo = flexItem.querySelector(".vimeo-video")
-      ? flexItem.querySelector(".vimeo-video").innerHTML
-      : "";
-
-    openLightbox(imageCode, hiddenInfo, hiddenImages, vimeoVideo);
+    openFromItem(flexItem);
   });
 
-  closeButton.addEventListener("click", closeLightbox);
+  closeButton.addEventListener("click", () => closeLightbox());
 
   lightbox.addEventListener("click", function (event) {
-    if (event.target === lightbox) {
+    if (event.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && lightbox.classList.contains("active")) {
       closeLightbox();
     }
   });
 
-  document
-    .getElementById("clickableHeader")
-    .addEventListener("click", function () {
-      window.location.href = "mainpage";
-    });
-});
-document.querySelectorAll(".version-tab").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    document
-      .querySelectorAll(".version-tab")
-      .forEach((b) => b.classList.remove("active"));
-    btn.classList.add("active");
-
-    showVersion(artworkData.versions[btn.dataset.index]);
+  document.getElementById("clickableHeader")?.addEventListener("click", function () {
+    window.location.href = "mainpage";
   });
+
+  // In case the fetch resolved before this script ran
+  window.openFromHash();
 });

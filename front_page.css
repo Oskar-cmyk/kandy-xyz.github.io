@@ -22,7 +22,9 @@ body {
 .rightside {
   background: black;
 }
-
+.blog{
+    background: #84ff00;
+}
 .leftside:hover,
 .rightside:hover {
   width: 100%;
