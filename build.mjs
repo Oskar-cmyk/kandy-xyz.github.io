@@ -3,7 +3,7 @@ import fs from 'node:fs';
 
 const PROJECT_ID = 'z3noo8fe';
 const DATASET = 'production';
-const TEMPLATE = 'second.html'; // the page that shows the works
+const TEMPLATE = 'work.html'; // the page that shows the works
 
 const query = `*[_type=="artwork"] | order(order asc){
   _id,
