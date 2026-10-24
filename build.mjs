@@ -53,12 +53,17 @@ const { result: works } = await res.json();
 
 // 2. Copy site files into dist/
 fs.rmSync('dist', { recursive: true, force: true });
-fs.cpSync('.', 'dist', {
-  recursive: true,
-  filter: (src) =>
-    !/(^|[\\/])(node_modules|\.git|\.github|dist|build\.mjs|work-data\.js|package(-lock)?\.json)$/.test(src),
-});
+fs.mkdirSync('dist');
 
+const skip = new Set([
+  'node_modules', '.git', '.github', 'dist',
+  'build.mjs', 'work-data.js', 'package.json', 'package-lock.json',
+]);
+
+for (const entry of fs.readdirSync('.')) {
+  if (skip.has(entry)) continue;
+  fs.cpSync(entry, `dist/${entry}`, { recursive: true });
+}
 // 3. Bake the works into the HTML
 let html = fs.readFileSync(TEMPLATE, 'utf8');
 
